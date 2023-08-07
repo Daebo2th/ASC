@@ -52,7 +52,7 @@
 				</tr> -->
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="회원가입"></td>
+					value="회원가입"> </td>
 			</tr>
 		</table>
 	</form>
