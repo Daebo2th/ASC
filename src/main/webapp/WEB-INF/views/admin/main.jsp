@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1 align="center">회원리스트</h1>
-<table>
+<table border="1" align="center" width="500px">
     <thead>
     <tr>
         <th>아이디</th>

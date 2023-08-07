@@ -8,7 +8,7 @@
 <h1>${userName}님 환영합니다</h1>
 <br/>
 <a href="/admin/">관리자페이지</a>
-<a href="/user/">사용자페이지</a>
+<a href="/user/select.do?uId=${userName}">사용자페이지</a>
 <a href="/user/logout.do">로그아웃</a>
 <a href="/user/updateform.do?uId=${userName}">정보수정</a>
 
