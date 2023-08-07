@@ -8,6 +8,10 @@
 	<insert id="insertUser" parameterType="userDTO">
 		insert into user2(u_id, pwd, regdate) values (#{u_id}, #{pwd}, CURRENT_TIMESTAMP)
 	</insert>
+
+	<select id="selectUser" parameterType="String"  resultType="">
+		select u_id, pwd, 1 enabled from user_member where u_id=#{uId}
+	</select>
 	
 	<update id="updatePwd" parameterType="userDTO">
 		update user2 set pwd = {pwd} where u_id = #{u_id}

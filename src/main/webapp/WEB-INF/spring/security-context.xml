@@ -22,9 +22,10 @@
         <!-- 로그인폼 -->
         <security:form-login login-page="/user/login.do"
                              login-processing-url="/user/login_check.do"
-                             authentication-success-handler-ref="userLoginSuccessHandler"
-                             authentication-failure-handler-ref="userLoginFailureHandler"
+
                              username-parameter="uId" password-parameter="pwd"/>
+        <!--                             authentication-success-handler-ref="userLoginSuccessHandler"-->
+        <!--                             authentication-failure-handler-ref="userLoginFailureHandler"-->
 
         <security:session-management>
             <security:concurrency-control
@@ -48,19 +49,22 @@
 
         <bean id="userDeniedHandler"
               class="com.kosa.service.UserDeniedHandler"/>
-        <bean id="userLoginSuccessHandler"
-              class="com.kosa.service.UserLoginSuccessHandler"/>
-        <bean id="userLoginFailureHandler"
-              class="com.kosa.service.UserLoginFailureHandler"/>
+<!--        <bean id="userLoginSuccessHandler"-->
+<!--              class="com.kosa.service.UserLoginSuccessHandler"/>-->
+<!--        <bean id="userLoginFailureHandler"-->
+<!--              class="com.kosa.service.UserLoginFailureHandler"/>-->
 
     <!-- 로그인 처리하는 빈 -->
-    <bean id="userService" class="com.kosa.service.UserAuthenticationService"/>
+<!--    <bean id="userService" class="com.kosa.service.UserAuthenticationService"/>-->
 
 
     <!-- 사용자가 입력한 비밀번호를 암호화된 비밀번호와 체크하는 로직이 포함 -->
     <security:authentication-manager>
-        <security:authentication-provider
-                user-service-ref="userService">
+        <security:authentication-provider><!-- user-service-ref="userService"-->
+            <security:jdbc-user-service
+                    data-source-ref="dataSource"
+                    users-by-username-query="select u_id, u_pwd, 1 enabled from user_member where u_id=?"
+                    authorities-by-username-query="select * from (select s.r_id,s.R_AUTHORITY from SECURITY_ROLE s union select r.c_id, r.C_AUTHORITY  from role_comparison r) r where r_id=?" />
             <security:password-encoder ref="passwordEncorder">
                 <security:salt-source user-property="username"/>
             </security:password-encoder>
