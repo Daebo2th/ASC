@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -103,13 +102,12 @@ public class UserController {
     public String selectById(@RequestParam String uId, Model model) {
     	   UserInfoDTO userInfo = dao.selectById(uId);
            model.addAttribute("userInfo", userInfo);
-           return "user/select";
+           return "redirect:/";
     }
     
     @GetMapping("/updateform.do")
-    public String updateForm() {
-
-
+    public String updateForm(Model model, String uId) {
+    	model.addAttribute("userInfo", dao.selectById(uId));
         return "user/updateform";
     }
     
@@ -117,7 +115,7 @@ public class UserController {
     public String updateInfo(String name, String id, String pwd, int age, String gender) {
     	String dbpw = shaEncoder.saltEncoding(pwd, id);
     	Map<String, String> map = new HashMap<String, String>();
-    	map.put("uId", id);
+    	map.put("id", id);
     	map.put("pwd", dbpw);
     	dao.updateInfo(new UserInfoDTO(id, name, gender, age));
     	dao.updatePwd(map);

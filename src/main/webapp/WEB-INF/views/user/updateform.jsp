@@ -26,12 +26,12 @@
 			<tr>
 				<th>이름</th>
 				<td><input type="text" name="name" maxlength="5" size="12"
-					value="${dto.}" readonly /></td>
+					value="${userInfo.uname}" readonly /></td>
 			</tr>
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" name="id" maxlength="5" size="12"
-					value="${dto.id}" readonly/></td>
+				<td><input type="text" name="id" maxlength="50" size="65"
+					value="${userInfo.uid}" readonly/></td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>

@@ -3,7 +3,6 @@ package com.kosa.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.kosa.dto.UserDTO;
 import com.kosa.dto.UserInfoDTO;
 
 public interface UserDAO {

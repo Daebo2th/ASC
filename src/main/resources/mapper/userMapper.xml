@@ -10,7 +10,7 @@
 	</insert>
 
 	<select id="selectUser" parameterType="String"  resultType="HashMap">
-		select u_id, pwd, role from user2 u join role r on u.u_id= r.r_id where u_id=#{uId}
+		select u_id, pwd, role from user2 u join role r on u.u_id= r.r_id where u_id=#{uid}
 	</select>
 	
 	<update id="updatePwd" parameterType="java.util.Map">
@@ -22,7 +22,7 @@
 	</delete>
 	
 	<select id="selectByIdInfo" resultType="userInfoDTO">
-		select * from user_info where u_id=#{uId}
+		select * from user_info where u_id=#{uid}
 	</select>
 	
 	<insert id="insertInfo" parameterType="java.util.Map">
@@ -34,6 +34,6 @@
 	</select>
 	
 	<update id="updateInfo" parameterType="userInfoDTO">
-		update user_info set age = #{age}, gender = #{gender} where u_id = #{uId}
+		update user_info set age = #{age}, gender = #{gender} where u_id = #{uid}
 	</update>
 </mapper>
