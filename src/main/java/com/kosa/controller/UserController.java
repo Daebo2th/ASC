@@ -25,12 +25,12 @@ public class UserController {
 	
     @GetMapping("/join.do")
     public String join(Model model){
-    	
+
         return "user/join";
     }
 
     @PostMapping("/join.do")
-    public String joinForm(String id, String pwd, 
+    public String joinForm(String id, String pwd,
 			String name, int age, String gender){
     	String dbpw = shaEncoder.saltEncoding(pwd, id);
     	Map<String, Object> map = new HashMap<>(); 
@@ -45,35 +45,30 @@ public class UserController {
     }
 
     @GetMapping("login.do")
-    public String login(){
-
-        return "user/login";
-    }
-
-    @PostMapping("login.do")
-    public String loginForm(String id){
-
+    public String login(Model model, boolean fail) {
+        if (fail) {
+            System.out.println("실패");
+        }
         return "user/login";
     }
 
     @PostMapping("/logout.do")
-    public String logout(){
+    public String logout() {
 
         return "redirect:/login";
     }
-//
-//    @GetMapping("/")
-//    public String admin(){
-//
-//        return "redirect:/login";
-//    }
-//
-//    @GetMapping("/")
-//    public String user(){
-//
-//        return "redirect:/login";
-//    }
 
+    @GetMapping("/")
+    public String admin() {
+
+        return "index";
+    }
+
+    @GetMapping("/main.do")
+    public String user() {
+
+        return "index";
+    }
 
 
 }

@@ -21,10 +21,10 @@ function join(){
 	<table>
 		<tr>
 			<td>아이디</td>
-			<td><input name=""></td>
+			<td><input name="uId"></td>
 		</tr>
 			<td>비밀번호</td>
-			<td><input type="password" name="">
+			<td><input type="password" name="pwd">
 				<!-- <input name="_spring_security_remember_me" 	type="checkbox">자동 로그인 -->
 			</td>
 		</tr>

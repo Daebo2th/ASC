@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ShaEncoder {
 	
 	@Autowired
-//	@Qualifier("passwordEncoder")
+	@Qualifier("passwordEncorder")
 	ShaPasswordEncoder shaPasswordEncoder;
 	
 	public String encoding(String str) {
