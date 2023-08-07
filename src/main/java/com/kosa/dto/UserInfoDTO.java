@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfoDTO {
-	
-	private String uId, uName, gender;
+
+	private String uid, uname, gender;
 	private int age;
 
 }

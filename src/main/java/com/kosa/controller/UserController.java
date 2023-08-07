@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosa.dao.UserDAO;
+import com.kosa.dto.UserInfoDTO;
 import com.kosa.service.ShaEncoder;
 
 @Controller
@@ -78,18 +80,13 @@ public class UserController {
         return "redirect:/login?logout=true";
     }
 
-    @GetMapping("/")
-    public String admin() {
-
-        return "index";
-    }
-
     @GetMapping("/main.do")
     public String user() {
 
         return "index";
     }
     
+
     //session에 저장된 uid를 가져와서 삭제 시켜줌 
     @GetMapping("/delete.do")
     public String deleteUser(String uId, Model model, Principal principal) {
@@ -102,6 +99,28 @@ public class UserController {
             return "error";
         }
     }
+    @GetMapping("/select.do")
+    public String selectById(@RequestParam String uId, Model model) {
+    	   UserInfoDTO userInfo = dao.selectById(uId);
+           model.addAttribute("userInfo", userInfo);
+           return "user/select";
+    }
+    
+    @GetMapping("/updateform.do")
+    public String updateForm() {
 
 
+        return "user/updateform";
+    }
+    
+    @PostMapping("/update.do")
+    public String updateInfo(String name, String id, String pwd, int age, String gender) {
+    	String dbpw = shaEncoder.saltEncoding(pwd, id);
+    	Map<String, String> map = new HashMap<String, String>();
+    	map.put("uId", id);
+    	map.put("pwd", dbpw);
+    	dao.updateInfo(new UserInfoDTO(id, name, gender, age));
+    	dao.updatePwd(map);
+    	return "redirect:/";
+    }
 }

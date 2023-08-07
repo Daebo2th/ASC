@@ -8,11 +8,11 @@
 
 <script defer type="text/javascript">
 	function update() {
-		location.href = "${path}/user/update.do?";
+		location.href = "${path}/user/update.do";
 	}
-		function delete() {
-		location.href = "${path}/user/delete.do?uId='${dto.uid}'";
-	} 
+	function delete() {
+		location.href = "${path}/user/delete.do";
+	}
 </script>
 </head>
 <body>
@@ -21,9 +21,7 @@
 <body>
 
 	<h1>내 정보 수정페이지</h1>
-	
-	<form action="${path}/user/" method="post">
-		<c:For
+	<form action="${path}/user/update.do" method="post">
 		<table width="600">
 			<tr>
 				<th>이름</th>
@@ -52,10 +50,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" value="수정"
-					onclick="update()" /></td>
+				<td colspan="2"><input type="submit" value="수정"/></td>
 				<td colspan="2"><input type="button" value="삭제"
-					onclick="delete()" /></td>	
+					onclick="delete()" /></td>
 			</tr>
 
 		</table>
