@@ -8,5 +8,6 @@
 <h1><%= "Hello World!" %></h1>
 <br/>
 <a href="/user/logout.do">로그아웃</a>
+
 </body>
 </html>

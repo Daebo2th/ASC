@@ -1,7 +1,11 @@
 package com.kosa.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +15,12 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosa.dao.UserDAO;
 import com.kosa.service.ShaEncoder;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/user")
@@ -42,7 +44,9 @@ public class UserController {
     @PostMapping("/join.do")
     public String joinForm(String id, String pwd,
 			String name, int age, String gender){
+    
     	String dbpw = shaEncoder.saltEncoding(pwd, id);
+    	
     	Map<String, Object> map = new HashMap<>(); 
     	map.put("id", id);
     	map.put("pwd", dbpw);
@@ -70,6 +74,7 @@ public class UserController {
             System.out.println("asd2");
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+        
         return "redirect:/login?logout=true";
     }
 
@@ -83,6 +88,19 @@ public class UserController {
     public String user() {
 
         return "index";
+    }
+    
+    //session에 저장된 uid를 가져와서 삭제 시켜줌 
+    @GetMapping("/delete.do")
+    public String deleteUser(String uId, Model model, Principal principal) {
+        if(principal != null && principal.getName().equals(uId)) { // 인증된 사용자인지 검사
+            dao.delete(uId);
+            
+            return "redirect:/logout"; // 삭제 성공 하면 로그아웃 
+        } else {
+            model.addAttribute("errorMessage", "삭제할 수 없는 사용자입니다.");
+            return "error";
+        }
     }
 
 
