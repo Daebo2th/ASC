@@ -11,12 +11,12 @@
 
 	<h2>회원 가입</h2>
 
-	<form action="${path}/user/" method="post"> 		<!-- /user/insertUser.do -->
+	<form action="${path}/user/join.do" method="post"> 		<!-- /user/insertUser.do -->
 
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name=""></td>
+				<td><input type="text" name="id"></td>
 			</tr>
 			
 			<tr>
@@ -26,12 +26,12 @@
 			
 			<tr>
 				<td>이름</td>
-				<td><input type="text" /></td>
+				<td><input type="text" name="name"/></td>
 			</tr>
 			
 			<tr>
 				<td>나이</td>
-				<td><input type="number" min="1" max="99" autocomplete="off"></td>
+				<td><input type="number" name="age" min="1" max="99" autocomplete="off"></td>
 			</tr>
 			
 			<tr>
