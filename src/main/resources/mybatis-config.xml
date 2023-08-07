@@ -9,6 +9,6 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-<!--        <typeAlias type="kr.co.mycom.model.BoardDTO" alias="boardDTO"/>-->
+        <typeAlias type="com.kosa.dto.UserDTO" alias="userDTO"/>
     </typeAliases>
 </configuration>
