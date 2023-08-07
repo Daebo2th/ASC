@@ -9,7 +9,7 @@
 		insert into user2(u_id, pwd, regdate) values (#{u_id}, #{pwd}, CURRENT_TIMESTAMP)
 	</insert>
 	
-	<update id="updatePwd" parameterType="com.kosa.dto.UserDTO">
+	<update id="updatePwd" parameterType="userDTO">
 		update user2 set pwd = {pwd} where u_id = #{u_id}
 	</update>
 	
@@ -17,11 +17,11 @@
 		delete from user2 where u_id = {u_id}
 	</delete>
 	
-	<select id="selectInfo" resultType="com.kosa.dto.UserDTO">
+	<select id="selectInfo" resultType="userDTO">
 		select * from user_info where
 	</select>
 	
-	<insert id="insertInfo" parameterType="com.kosa.dto.UserDTO">
+	<insert id="insertInfo" parameterType="userDTO">
 		insert into user2(u_id, u_name, age, gender) values (#{u_id}, #{u_name}, #{age}, #{gender})
 	</insert>
 

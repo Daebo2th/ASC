@@ -41,6 +41,18 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @PostMapping("/")
+    public String admin(){
+
+        return "redirect:/login";
+    }
+
+    @PostMapping("/")
+    public String user(){
+
+        return "redirect:/login";
+    }
+
 
 
 }
