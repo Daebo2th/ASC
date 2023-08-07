@@ -109,7 +109,7 @@ public class UserController {
     public String selectById(@RequestParam String uId, Model model) {
     	   UserInfoDTO userInfo = dao.selectById(uId);
            model.addAttribute("userInfo", userInfo);
-           return "redirect:/";
+           return "user/select";
     }
     
     @GetMapping("/updateform.do")
