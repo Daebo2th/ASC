@@ -5,29 +5,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/join")
+    @GetMapping("/join.do")
     public String join(Model model){
 
         return "join";
     }
 
-    @PostMapping("/join")
+    @PostMapping("/join.do")
     public String joinForm(UserDTO dto){
 
         return "join";
     }
 
-    @GetMapping("login")
+    @GetMapping("login.do")
     public String login(){
 
         return "login";
     }
 
-    @PostMapping("login")
+    @PostMapping("login.do")
     public String loginForm(String id){
 
         return "login";
@@ -35,7 +37,7 @@ public class UserController {
 
 
 
-    @PostMapping("/logout")
+    @PostMapping("/logout.do")
     public String logout(){
 
         return "redirect:/login";
