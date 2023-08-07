@@ -3,6 +3,9 @@ package com.kosa.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kosa.dao.UserDAO;
 import com.kosa.dto.UserInfoDTO;
 import com.kosa.service.ShaEncoder;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/user")
@@ -88,7 +88,20 @@ public class UserController {
            return "user/select";
     }
     
+    @GetMapping("/updateform.do")
+    public String updateForm() {
+
+        return "user/updateform";
+    }
     
-
-
+    @PostMapping("/update.do")
+    public String updateInfo(String name, String id, String pwd, int age, String gender) {
+    	String dbpw = shaEncoder.saltEncoding(pwd, id);
+    	Map<String, String> map = new HashMap<String, String>();
+    	map.put("uId", id);
+    	map.put("pwd", dbpw);
+    	dao.updateInfo(new UserInfoDTO(id, name, gender, age));
+    	dao.updatePwd(map);
+    	return "redirect:/";
+    }
 }

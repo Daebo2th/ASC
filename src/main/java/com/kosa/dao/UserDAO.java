@@ -10,7 +10,8 @@ public interface UserDAO {
 	// 회원가입
 	public void join(Map<String, Object> map);
 	// 회원 수정
-	public void update(UserDTO dto);
+	public void updatePwd(Map<String, String> map);
+	public void updateInfo(UserInfoDTO dto);
 	// 회원 삭제
 	public void delete(String uId);
 	// 로그인

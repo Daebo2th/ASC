@@ -13,8 +13,8 @@
 		select u_id, pwd, role from user2 u join role r on u.u_id= r.r_id where u_id=#{uId}
 	</select>
 	
-	<update id="updatePwd" parameterType="userDTO">
-		update user2 set pwd = #{pwd} where u_id = #{u_id}
+	<update id="updatePwd" parameterType="java.util.Map">
+		update user2 set pwd = #{pwd} where u_id = #{id}
 	</update>
 	
 	<delete id="deleteUser" parameterType="int">
@@ -32,5 +32,8 @@
 	<select id="selectAll" resultType="userInfoDTO">
 		select * from user_info
 	</select>
-
+	
+	<update id="updateInfo" parameterType="userInfoDTO">
+		update user_info set age = #{age}, gender = #{gender} where u_id = #{uId}
+	</update>
 </mapper>
