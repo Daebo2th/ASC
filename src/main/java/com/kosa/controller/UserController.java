@@ -14,28 +14,26 @@ public class UserController {
     @GetMapping("/join.do")
     public String join(Model model){
 
-        return "join";
+        return "user/join";
     }
 
     @PostMapping("/join.do")
     public String joinForm(UserDTO dto){
 
-        return "join";
+        return "user/join";
     }
 
     @GetMapping("login.do")
     public String login(){
 
-        return "login";
+        return "user/login";
     }
 
     @PostMapping("login.do")
     public String loginForm(String id){
 
-        return "login";
+        return "user/login";
     }
-
-
 
     @PostMapping("/logout.do")
     public String logout(){
