@@ -18,6 +18,7 @@
         <junit.version>5.9.2</junit.version>
         <org.aspectj-version>1.6.10</org.aspectj-version>
         <org.slf4j-version>1.6.6</org.slf4j-version>
+        <org.springframework.security>4.0.1.RELEASE</org.springframework.security>
     </properties>
 
     <dependencies>
@@ -224,27 +225,27 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-acl</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${org.springframework.security}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${org.springframework.security}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${org.springframework.security}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${org.springframework.security}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>4.0.1.RELEASE</version>
+            <version>${org.springframework.security}</version>
         </dependency>
         <dependency>
             <groupId>org.imgscalr</groupId>
