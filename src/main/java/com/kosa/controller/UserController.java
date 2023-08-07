@@ -13,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosa.dao.UserDAO;
+import com.kosa.dto.UserInfoDTO;
 import com.kosa.service.ShaEncoder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,6 +86,15 @@ public class UserController {
 
         return "index";
     }
+    
+    @GetMapping("/select.do")
+    public String selectById(@RequestParam String uId, Model model) {
+    	   UserInfoDTO userInfo = dao.selectById(uId);
+           model.addAttribute("userInfo", userInfo);
+           return "user/select";
+    }
+    
+    
 
 
 }

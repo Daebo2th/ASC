@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kosa.dto.UserDTO;
+import com.kosa.dto.UserInfoDTO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -34,5 +35,12 @@ public class UserDAOImpl implements UserDAO {
 	public void login(String uId) {
 		
 	}
+
+	@Override
+	public UserInfoDTO selectById(String uId) {
+		return sqlSession.selectOne("user.selectByIdInfo", uId);
+	}
+
+
 
 }

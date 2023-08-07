@@ -14,15 +14,15 @@
 	</select>
 	
 	<update id="updatePwd" parameterType="userDTO">
-		update user2 set pwd = {pwd} where u_id = #{u_id}
+		update user2 set pwd = #{pwd} where u_id = #{u_id}
 	</update>
 	
 	<delete id="deleteUser" parameterType="int">
-		delete from user2 where u_id = {u_id}
+		delete from user2 where u_id = #{u_id}
 	</delete>
 	
-	<select id="selectInfo" resultType="userDTO">
-		select * from user_info
+	<select id="selectByIdInfo" resultType="userInfoDTO">
+		select * from user_info where u_id=#{uId}
 	</select>
 	
 	<insert id="insertInfo" parameterType="java.util.Map">

@@ -9,5 +9,6 @@
     </settings>
     <typeAliases>
         <typeAlias type="com.kosa.dto.UserDTO" alias="userDTO"/>
+        <typeAlias type="com.kosa.dto.UserInfoDTO" alias="userInfoDTO"/>
     </typeAliases>
 </configuration>

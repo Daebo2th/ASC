@@ -3,6 +3,7 @@ package com.kosa.dao;
 import java.util.Map;
 
 import com.kosa.dto.UserDTO;
+import com.kosa.dto.UserInfoDTO;
 
 public interface UserDAO {
 	// 회원가입
@@ -13,4 +14,6 @@ public interface UserDAO {
 	public void delete(String uId);
 	// 로그인
 	public void login(String uId);
+	// 회원 조회
+	public UserInfoDTO selectById(String uId);
 }
