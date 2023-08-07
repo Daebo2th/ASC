@@ -9,8 +9,8 @@
 		insert into user2(u_id, pwd, regdate) values (#{id}, #{pwd}, CURRENT_TIMESTAMP)
 	</insert>
 
-	<select id="selectUser" parameterType="String"  resultType="userDTO">
-		select u_id, pwd, 1 enabled from user_member where u_id=#{uId}
+	<select id="selectUser" parameterType="String"  resultType="HashMap">
+		select u_id, pwd, role from user2 u join role r on u.u_id= r.r_id where u_id=#{uId}
 	</select>
 	
 	<update id="updatePwd" parameterType="userDTO">
@@ -22,7 +22,7 @@
 	</delete>
 	
 	<select id="selectInfo" resultType="userDTO">
-		select * from user_info where
+		select * from user_info
 	</select>
 	
 	<insert id="insertInfo" parameterType="java.util.Map">

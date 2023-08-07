@@ -3,6 +3,7 @@ package com.kosa.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class UserController {
 	
 	@Autowired
 	UserDAO dao;
+
+    @Autowired
+    SqlSessionTemplate sqlSession;
 	
     @GetMapping("/join.do")
     public String join(Model model){

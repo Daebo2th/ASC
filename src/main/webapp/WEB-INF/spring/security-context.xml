@@ -22,11 +22,11 @@
         <!-- 로그인폼 -->
         <security:form-login login-page="/user/login.do"
                              login-processing-url="/user/login_check.do"
-                             default-target-url="/"
-                             authentication-failure-url="/user/login.do?fail=true"
+                             authentication-success-handler-ref="userLoginSuccessHandler"
+                             authentication-failure-handler-ref="userLoginFailureHandler"
                              username-parameter="uId" password-parameter="pwd"/>
-        <!--                             authentication-success-handler-ref="userLoginSuccessHandler"-->
-        <!--                             authentication-failure-handler-ref="userLoginFailureHandler"-->
+        <!--                             default-target-url="/"-->
+        <!--                             authentication-failure-url="/user/login.do?fail=true"-->
 
         <security:session-management>
             <security:concurrency-control
@@ -40,34 +40,30 @@
                 logout-success-url="/user/login.do" logout-url="/user/logout.do"
                 invalidate-session="true"/>
         <!-- 접근 권한이 없는 경우 -->
-<!--        <security:access-denied-handler-->
-<!--                ref="userDeniedHandler"/>-->
+        <security:access-denied-handler
+                ref="userDeniedHandler"/>
 
         <!-- 자동 로그인 관련 쿠키 저장, 세션이 종료된 후에도 자동 로그인 할 수 있는 기능 -->
-<!--        <security:remember-me key="userKey"-->
-<!--                              token-validity-seconds="3600"/>-->
+                <security:remember-me key="userKey"
+                                      token-validity-seconds="3600"/>
     </security:http>
 
-<!--        <bean id="userDeniedHandler"-->
-<!--              class="com.kosa.service.UserDeniedHandler"/>-->
-<!--        <bean id="userLoginSuccessHandler"-->
-<!--              class="com.kosa.service.UserLoginSuccessHandler"/>-->
-<!--        <bean id="userLoginFailureHandler"-->
-<!--              class="com.kosa.service.UserLoginFailureHandler"/>-->
+    <bean id="userDeniedHandler"
+          class="com.kosa.service.UserDeniedHandler"/>
+    <bean id="userLoginSuccessHandler"
+          class="com.kosa.service.UserLoginSuccessHandler"/>
+    <bean id="userLoginFailureHandler"
+          class="com.kosa.service.UserLoginFailureHandler"/>
 
     <!-- 로그인 처리하는 빈 -->
-<!--    <bean id="userService" class="com.kosa.service.UserAuthenticationService"/>-->
+    <bean id="userService" class="com.kosa.service.UserAuthenticationService" c:sqlSession-ref="sqlSession"/>
 
 
     <!-- 사용자가 입력한 비밀번호를 암호화된 비밀번호와 체크하는 로직이 포함 --><!-- user-service-ref="userService"-->
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:jdbc-user-service
-                    data-source-ref="dataSource"
-                    users-by-username-query="select u_id , pwd, 1 enabled from user2 where u_id=?"
-                    authorities-by-username-query="select r_id, role from role where r_id=?" />
+        <security:authentication-provider user-service-ref="userService">
             <security:password-encoder ref="passwordEncorder">
-                <security:salt-source user-property="u_id"/>
+                <security:salt-source user-property="username"/>
             </security:password-encoder>
         </security:authentication-provider>
     </security:authentication-manager>
@@ -78,32 +74,3 @@
         <constructor-arg name="strength" value="256"/>
     </bean>
 </beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
