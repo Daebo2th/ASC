@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfoDTO {
-	
+
 	private String uid, uname, gender;
 	private int age;
 

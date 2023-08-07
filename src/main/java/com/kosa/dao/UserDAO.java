@@ -1,5 +1,6 @@
 package com.kosa.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.kosa.dto.UserDTO;
@@ -16,4 +17,6 @@ public interface UserDAO {
 	public void login(String uId);
 	// 회원 조회
 	public UserInfoDTO selectById(String uId);
+
+	List<UserInfoDTO> selectAll();
 }

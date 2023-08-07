@@ -29,4 +29,8 @@
 		insert into user_info(u_id, u_name, age, gender) values (#{id}, #{name}, #{age}, #{gender})
 	</insert>
 
+	<select id="selectAll" resultType="userInfoDTO">
+		select * from user_info
+	</select>
+
 </mapper>

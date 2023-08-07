@@ -75,12 +75,6 @@ public class UserController {
         return "redirect:/login?logout=true";
     }
 
-    @GetMapping("/")
-    public String admin() {
-
-        return "index";
-    }
-
     @GetMapping("/main.do")
     public String user() {
 

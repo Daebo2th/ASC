@@ -21,7 +21,7 @@
 <body>
 
 	<h1>내 정보 수정페이지</h1>
-	
+
 	<form action="${path}/user/" method="post">
 
 		<table width="600">
@@ -54,7 +54,7 @@
 				<td colspan="2"><input type="button" value="수정"
 					onclick="update()" /></td>
 				<td colspan="2"><input type="button" value="삭제"
-					onclick="delete()" /></td>	
+					onclick="delete()" /></td>
 			</tr>
 
 		</table>
