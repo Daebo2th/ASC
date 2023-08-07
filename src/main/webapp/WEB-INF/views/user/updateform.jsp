@@ -5,15 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>updateform.jsp</title>
-
-<script defer type="text/javascript">
-	function update() {
-		location.href = "${path}/user/update.do";
-	}
-	function delete() {
-		location.href = "${path}/user/delete.do";
-	}
-</script>
 </head>
 <body>
 
@@ -21,6 +12,7 @@
 <body>
 
 	<h1>내 정보 수정페이지</h1>
+	
 	<form action="${path}/user/update.do" method="post">
 		<table width="600">
 			<tr>
@@ -30,7 +22,7 @@
 			</tr>
 			<tr>
 				<th>아이디</th>
-				<td><input type="text" name="id" maxlength="50" size="65"
+				<td><input type="text" name="id" maxlength="5" size="12"
 					value="${userInfo.uid}" readonly/></td>
 			</tr>
 			<tr>
@@ -50,10 +42,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="수정"/></td>
-				<td colspan="2"><input type="button" value="삭제"
-					onclick="delete()" /></td>
+				<th></th>
+				<td>
+				<input type="submit" value="수정" >
 			</tr>
+
 
 		</table>
 

@@ -17,8 +17,8 @@
 		update user2 set pwd = #{pwd} where u_id = #{id}
 	</update>
 	
-	<delete id="deleteUser" parameterType="int">
-		delete from user2 where u_id = #{u_id}
+	<delete id="deleteUser" parameterType="String">
+		delete from user2 where u_id = #{uid}
 	</delete>
 	
 	<select id="selectByIdInfo" resultType="userInfoDTO">

@@ -85,18 +85,25 @@ public class UserController {
         return "index";
     }
     
+    @GetMapping("/deleteform.do")
+    public String deleteform(Model model, String uId) {	
+    	model.addAttribute("userInfo", dao.selectById(uId));
+        return "user/deleteform";
+    }
+    
 
     //session에 저장된 uid를 가져와서 삭제 시켜줌 
-    @GetMapping("/delete.do")
+    @PostMapping("/delete.do")
     public String deleteUser(String uId, Model model, Principal principal) {
         if(principal != null && principal.getName().equals(uId)) { // 인증된 사용자인지 검사
             dao.delete(uId);
-            
-            return "redirect:/logout"; // 삭제 성공 하면 로그아웃 
-        } else {
-            model.addAttribute("errorMessage", "삭제할 수 없는 사용자입니다.");
-            return "error";
+            System.out.println("삭제 성공");
         }
+            return "redirect:/user/logout.do"; // 삭제 성공 하면 로그아웃 
+		 /*
+			 * else { model.addAttribute("errorMessage", "삭제할 수 없는 사용자입니다."); return
+			 * "error"; }
+			 */
     }
     @GetMapping("/select.do")
     public String selectById(@RequestParam String uId, Model model) {
